@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import TasksList from "./TasksList";
-// import ToDoForm from "./ToDoForm";
+import ToDoForm from "./ToDoForm";
 
 class ToDoList extends Component {
   constructor() {
@@ -72,7 +72,7 @@ class ToDoList extends Component {
   render() {
     return (
       <div className="container">
-        <form onSubmit={this.addItem}>
+        {/* <form onSubmit={this.addItem}>
           <label htmlFor="taskName">Task Name:</label>
           <input
             onChange={this.handleChange}
@@ -81,13 +81,17 @@ class ToDoList extends Component {
             placeholder="Add to do here!"
           />
           <button type="submit">Add Task</button>
+        </form> */}
+        <ToDoForm
+          addItem={this.state.addItem}
+          handleChange={this.state.handleChange}
+        />
 
-          <TasksList
-            todo={this.state.todos}
-            deleteTask={this.deleteTask}
-            updateTask={this.updateTask}
-          />
-        </form>
+        <TasksList
+          todo={this.state.todos}
+          deleteTask={this.deleteTask}
+          updateTask={this.updateTask}
+        />
       </div>
     );
   }
