@@ -4,10 +4,10 @@ import React from "react";
 
 const ToDoForm = (props) => {
   const formInput = (
-    <form onSubmit={props.addItem}>
+    <form onSubmit={(input) => props.addItem(input)}>
       <label htmlFor="taskName">Task Name:</label>
       <input
-        onChange={props.handleChange}
+        onChange={(input) => props.handleChange(input)}
         name="taskName"
         type="text"
         placeholder="Add to do here!"

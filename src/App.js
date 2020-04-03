@@ -11,22 +11,24 @@ class ToDoList extends Component {
       currentToDo: "",
       taskId: 0,
     };
-    this.deleteTask = this.deleteTask.bind(this);
   }
 
   // Complete the handleChange and the addItem methods
   addItem = (event) => {
+    console.log("Found");
     event.preventDefault();
-
     const task = {
       taskId: this.state.taskId,
       taskName: this.state.currentToDo,
     };
 
-    this.setState({
-      taskId: this.state.taskId + 1,
-      todos: [...this.state.todos, task],
-    });
+    if (this.state.currentToDo !== "") {
+      this.setState({
+        taskId: this.state.taskId + 1,
+        todos: [...this.state.todos, task],
+        currentToDo: "",
+      });
+    }
   };
 
   handleChange = (event) => {
@@ -82,10 +84,7 @@ class ToDoList extends Component {
           />
           <button type="submit">Add Task</button>
         </form> */}
-        <ToDoForm
-          addItem={this.state.addItem}
-          handleChange={this.state.handleChange}
-        />
+        <ToDoForm addItem={this.addItem} handleChange={this.handleChange} />
 
         <TasksList
           todo={this.state.todos}
